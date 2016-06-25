@@ -12,7 +12,13 @@
     
         
     <url>
-     <loc>https://waffles.oqtl.ca/guides/install/</loc>
+     <loc>https://waffles.oqtl.ca/guides/waffles/</loc>
+     <lastmod>2016-06-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://waffles.oqtl.ca/guides/wafflescript/</loc>
      <lastmod>2016-06-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
