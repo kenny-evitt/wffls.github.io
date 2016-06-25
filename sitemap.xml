@@ -12,6 +12,16 @@
     
         
     <url>
+     <loc>https://waffles.oqtl.ca/guides/install/</loc>
+     <lastmod>2016-06-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
      <loc>https://waffles.oqtl.ca/resources/apt.key/</loc>
      <lastmod>2016-06-25</lastmod>
      <changefreq>daily</changefreq>
