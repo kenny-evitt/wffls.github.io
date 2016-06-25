@@ -13,7 +13,7 @@ $ git clone https://github.com/jtopjian/waffles /opt/waffles
 ## Command-line
 
 ```bash
-$ source /opt/waffles.sh
+$ source /opt/waffles/init.sh
 $ apt.pkg --help
 ```
 

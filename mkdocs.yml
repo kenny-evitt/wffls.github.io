@@ -12,8 +12,8 @@ markdown_extensions:
 pages:
   - Home: 'index.md'
   - Guides:
-    - Install Waffles: 'guides/waffles.md'
-    - Install wafflescript: 'guides/wafflescript.md'
+    - Install Waffles: 'guides/install_waffles.md'
+    - Install wafflescript: 'guides/install_wafflescript.md'
   - Waffles Resources:
     - apt.key: 'resources/apt.key.md'
     - apt.pkg: 'resources/apt.pkg.md'
