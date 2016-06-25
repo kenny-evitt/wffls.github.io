@@ -1,0 +1,49 @@
+site_name: Waffles
+site_url: 'https://waffles.oqtl.ca'
+site_description: 'Simple Configuration Tools'
+repo_url: 'https://github.com/wffls'
+remote_branch: 'master'
+theme: 'readthedocs'
+google_analytics: ['UA-75603-16', 'waffles.oqtl.ca']
+
+markdown_extensions:
+  - admonition
+
+pages:
+  - Home: 'index.md'
+  - Guides:
+    - Install Waffles: 'guides/waffles.md'
+    - Install wafflescript: 'guides/wafflescript.md'
+  - Waffles Resources:
+    - apt.key: 'resources/apt.key.md'
+    - apt.pkg: 'resources/apt.pkg.md'
+    - apt.ppa: 'resources/apt.ppa.md'
+    - apt.source: 'resources/apt.source.md'
+    - consul.check: 'resources/consul.check.md'
+    - consul.service: 'resources/consul.service.md'
+    - consul.template: 'resources/consul.template.md'
+    - consul.watch: 'resources/consul.watch.md'
+    - cron.entry: 'resources/cron.entry.md'
+    - dpkg.debconf: 'resources/dpkg.debconf.md'
+    - file.ini: 'resources/file.ini.md'
+    - file.line: 'resources/file.line.md'
+    - git.repo: 'resources/git.repo.md'
+    - ip6tables.rule: 'resources/ip6tables.rule.md'
+    - iptables.rule: 'resources/iptables.rule.md'
+    - mysql.database: 'resources/mysql.database.md'
+    - mysql.grant: 'resources/mysql.grant.md'
+    - mysql.user: 'resources/mysql.user.md'
+    - os.directory: 'resources/os.directory.md'
+    - os.file: 'resources/os.file.md'
+    - os.groupadd: 'resources/os.groupadd.md'
+    - os.symlink: 'resources/os.symlink.md'
+    - os.useradd: 'resources/os.useradd.md'
+    - python.pip: 'resources/python.pip.md'
+    - python.virtualenv: 'resources/python.virtualenv.md'
+    - rabbitmq.policy: 'resources/rabbitmq.policy.md'
+    - rabbitmq.user_permissions: 'resources/rabbitmq.user_permissions.md'
+    - rabbitmq.user: 'resources/rabbitmq.user.md'
+    - rabbitmq.vhost: 'resources/rabbitmq.vhost.md'
+    - service.sysv: 'resources/service.sysv.md'
+    - service.upstart: 'resources/service.upstart.md'
+    - sudoers.cmd: 'resources/sudoers.cmd.md'
