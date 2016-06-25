@@ -46,32 +46,32 @@
             "title": "Wafflescript"
         }, 
         {
-            "location": "/guides/waffles/", 
-            "text": "Install Waffles\n\n\nInstalling Waffles is quick and easy!\n\n\n1. Clone the repository to a directory of your choice and install:\n\n\n$ git clone https://github.com/jtopjian/waffles /opt/waffles\n\n\n\n\n2. Source the \ninit.sh\n file either on the command-line or in a script.\n\n\nCommand-line\n\n\n$ source /opt/waffles.sh\n$ apt.pkg --help\n\n\n\n\nScript\n\n\n#!/bin/bash\n\nsource /opt/waffles.sh\n\n# Install memcached\napt.pkg --package memcached --version latest\n\n# Set the listen option\nfile.line --file /etc/memcached.conf --line \n-l 0.0.0.0\n --match \n^-l\n\n\n# Determine the amount of memory available and use half of that for memcached\nmemory_bytes=$(elements System.Memory.Total 2\n/dev/null)\nmemory=$(( $memory_bytes / 1024 / 1024 / 2 ))\n\n# Set the memory available to memcached\nfile.line --file /etc/memcached.conf --line \n-m $memory\n --match \n^-m\n\n\n# Manage the memcached service\nservice.sysv --name memcached\n\n# If any changes happened above, restart memcached\nif [[ -n $waffles_total_changes ]]; then\n  exec.mute /etc/init.d/memcached restart\nfi", 
+            "location": "/guides/install_waffles/", 
+            "text": "Install Waffles\n\n\nInstalling Waffles is quick and easy!\n\n\n1. Clone the repository to a directory of your choice and install:\n\n\n$ git clone https://github.com/jtopjian/waffles /opt/waffles\n\n\n\n\n2. Source the \ninit.sh\n file either on the command-line or in a script.\n\n\nCommand-line\n\n\n$ source /opt/waffles/init.sh\n$ apt.pkg --help\n\n\n\n\nScript\n\n\n#!/bin/bash\n\nsource /opt/waffles.sh\n\n# Install memcached\napt.pkg --package memcached --version latest\n\n# Set the listen option\nfile.line --file /etc/memcached.conf --line \n-l 0.0.0.0\n --match \n^-l\n\n\n# Determine the amount of memory available and use half of that for memcached\nmemory_bytes=$(elements System.Memory.Total 2\n/dev/null)\nmemory=$(( $memory_bytes / 1024 / 1024 / 2 ))\n\n# Set the memory available to memcached\nfile.line --file /etc/memcached.conf --line \n-m $memory\n --match \n^-m\n\n\n# Manage the memcached service\nservice.sysv --name memcached\n\n# If any changes happened above, restart memcached\nif [[ -n $waffles_total_changes ]]; then\n  exec.mute /etc/init.d/memcached restart\nfi", 
             "title": "Install Waffles"
         }, 
         {
-            "location": "/guides/waffles/#install-waffles", 
+            "location": "/guides/install_waffles/#install-waffles", 
             "text": "Installing Waffles is quick and easy!  1. Clone the repository to a directory of your choice and install:  $ git clone https://github.com/jtopjian/waffles /opt/waffles  2. Source the  init.sh  file either on the command-line or in a script.", 
             "title": "Install Waffles"
         }, 
         {
-            "location": "/guides/waffles/#command-line", 
-            "text": "$ source /opt/waffles.sh\n$ apt.pkg --help", 
+            "location": "/guides/install_waffles/#command-line", 
+            "text": "$ source /opt/waffles/init.sh\n$ apt.pkg --help", 
             "title": "Command-line"
         }, 
         {
-            "location": "/guides/waffles/#script", 
+            "location": "/guides/install_waffles/#script", 
             "text": "#!/bin/bash\n\nsource /opt/waffles.sh\n\n# Install memcached\napt.pkg --package memcached --version latest\n\n# Set the listen option\nfile.line --file /etc/memcached.conf --line  -l 0.0.0.0  --match  ^-l \n\n# Determine the amount of memory available and use half of that for memcached\nmemory_bytes=$(elements System.Memory.Total 2 /dev/null)\nmemory=$(( $memory_bytes / 1024 / 1024 / 2 ))\n\n# Set the memory available to memcached\nfile.line --file /etc/memcached.conf --line  -m $memory  --match  ^-m \n\n# Manage the memcached service\nservice.sysv --name memcached\n\n# If any changes happened above, restart memcached\nif [[ -n $waffles_total_changes ]]; then\n  exec.mute /etc/init.d/memcached restart\nfi", 
             "title": "Script"
         }, 
         {
-            "location": "/guides/wafflescript/", 
+            "location": "/guides/install_wafflescript/", 
             "text": "Install wafflescript\n\n\nInstalling wafflescript is quick and easy!\n\n\n1. Check the \nRelease Page\n for the latest release.\n\n\n2. Download and Untar it:\n\n\n$ wget https://github.com/wffls/wafflescript/releases/download/X/wafflescript_X_linux_x86_64.tgz\n$ tar xzf wafflescript_X_linux_x86_64.tgz -C /usr/local/bin\n\n\n\n\n3. Use it as the \"shebang\" interpreter in a script:\n\n\n#!/usr/local/bin/wafflescript\n\n# Install memcached\napt.pkg --package memcached --version latest\n\n# Set the listen option\nfile.line --file /etc/memcached.conf --line \n-l 0.0.0.0\n --match \n^-l\n\n\n# Determine the amount of memory available and use half of that for memcached\nmemory_bytes=$(elements System.Memory.Total 2\n/dev/null)\nmemory=$(( $memory_bytes / 1024 / 1024 / 2 ))\n\n# Set the memory available to memcached\nfile.line --file /etc/memcached.conf --line \n-m $memory\n --match \n^-m\n\n\n# Manage the memcached service\nservice.sysv --name memcached\n\n# If any changes happened above, restart memcached\nif [[ -n $waffles_total_changes ]]; then\n  exec.mute /etc/init.d/memcached restart\nfi", 
             "title": "Install wafflescript"
         }, 
         {
-            "location": "/guides/wafflescript/#install-wafflescript", 
+            "location": "/guides/install_wafflescript/#install-wafflescript", 
             "text": "Installing wafflescript is quick and easy!  1. Check the  Release Page  for the latest release.  2. Download and Untar it:  $ wget https://github.com/wffls/wafflescript/releases/download/X/wafflescript_X_linux_x86_64.tgz\n$ tar xzf wafflescript_X_linux_x86_64.tgz -C /usr/local/bin  3. Use it as the \"shebang\" interpreter in a script:  #!/usr/local/bin/wafflescript\n\n# Install memcached\napt.pkg --package memcached --version latest\n\n# Set the listen option\nfile.line --file /etc/memcached.conf --line  -l 0.0.0.0  --match  ^-l \n\n# Determine the amount of memory available and use half of that for memcached\nmemory_bytes=$(elements System.Memory.Total 2 /dev/null)\nmemory=$(( $memory_bytes / 1024 / 1024 / 2 ))\n\n# Set the memory available to memcached\nfile.line --file /etc/memcached.conf --line  -m $memory  --match  ^-m \n\n# Manage the memcached service\nservice.sysv --name memcached\n\n# If any changes happened above, restart memcached\nif [[ -n $waffles_total_changes ]]; then\n  exec.mute /etc/init.d/memcached restart\nfi", 
             "title": "Install wafflescript"
         }, 
