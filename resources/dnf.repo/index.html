@@ -8,7 +8,7 @@
   
   
   
-  <title>apt.key - Waffles</title>
+  <title>dnf.repo - Waffles</title>
   
 
   <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "apt.key";
-    var mkdocs_page_input_path = "resources/apt.key.md";
-    var mkdocs_page_url = "/resources/apt.key/";
+    var mkdocs_page_name = "dnf.repo";
+    var mkdocs_page_input_path = "resources/dnf.repo.md";
+    var mkdocs_page_url = "/resources/dnf.repo/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -99,21 +99,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">apt.key</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#name">Name</a></li>
-                
-                    <li><a class="toctree-l4" href="#description">Description</a></li>
-                
-                    <li><a class="toctree-l4" href="#parameters">Parameters</a></li>
-                
-                    <li><a class="toctree-l4" href="#example">Example</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../apt.key/">apt.key</a>
         
     </li>
 
@@ -189,8 +176,21 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../dnf.repo/">dnf.repo</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">dnf.repo</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#name">Name</a></li>
+                
+                    <li><a class="toctree-l4" href="#description">Description</a></li>
+                
+                    <li><a class="toctree-l4" href="#parameters">Parameters</a></li>
+                
+                    <li><a class="toctree-l4" href="#example">Example</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -385,7 +385,7 @@
         
       
     
-    <li>apt.key</li>
+    <li>dnf.repo</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -400,19 +400,24 @@
             <div class="section">
               
                 <h2 id="name">Name</h2>
-<p>apt.key</p>
+<p>dnf.repo</p>
 <h3 id="description">Description</h3>
-<p>Manages apt keys</p>
+<p>Manages dnf/yum repositories</p>
 <h3 id="parameters">Parameters</h3>
 <ul>
 <li>state: The state of the resource. Required. Default: present.</li>
-<li>name: An arbitrary name. Required.</li>
-<li>key: The key to import. Required if no remote_keyfile.</li>
-<li>keyserver: The key server. Required if no remote_keyfile.</li>
-<li>remote_keyfile: A remote key to import. Required if no key or keyserver.</li>
+<li>file: name of the file in /etc/yum.repos.d/. Required.</li>
+<li>name: name of the repo. Required.</li>
+<li>description: A short description of the repo. Optional.</li>
+<li>baseurl: URL location of the repo. Optional.</li>
+<li>skip: Skip the repo if unavailable. Optional. Default 1.</li>
+<li>enabled: Enable this repository. Optional. Default 1.</li>
+<li>gpgcheck: Check RPMs for this repo. Optional. Default 0.</li>
+<li>gpgkey: Location of the key to check. Optional. Default "".</li>
 </ul>
 <h3 id="example">Example</h3>
-<pre><code class="bash">apt.key --name &quot;foobar&quot; --key 1C4CBDCDCD2EFD2A
+<pre><code class="bash">dnf.repo --file fedora-negativo17.repo --name negativo17 --description \
+  &quot;Negativo 17's repo&quot; --baseurl 'http://negativo17.org/repos/flash-plugin/fedora-$releasever/$basearch/'
 </code></pre>
               
             </div>
@@ -421,10 +426,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../apt.pkg/" class="btn btn-neutral float-right" title="apt.pkg">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../dpkg.debconf/" class="btn btn-neutral float-right" title="dpkg.debconf">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../guides/install_wafflescript/" class="btn btn-neutral" title="Install wafflescript"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dnf.pkg/" class="btn btn-neutral" title="dnf.pkg"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -452,10 +457,10 @@
           <a href="https://github.com/wffls" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../guides/install_wafflescript/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../dnf.pkg/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../apt.pkg/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../dpkg.debconf/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

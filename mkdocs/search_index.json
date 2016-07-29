@@ -306,6 +306,81 @@
             "title": "TODO"
         }, 
         {
+            "location": "/resources/dnf.copr/", 
+            "text": "Name\n\n\ndnf.copr\n\n\nDescription\n\n\nManages copr repositories\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nname: The user name of the copr repo. rhscl in rhscl/perl516. Required.\n\n\nproject: The project name of the copr repo. perl516 in rhscl/perl516. Required.\n\n\n\n\nExample\n\n\ndnf.copr --name rhscl --project perl516", 
+            "title": "dnf.copr"
+        }, 
+        {
+            "location": "/resources/dnf.copr/#name", 
+            "text": "dnf.copr", 
+            "title": "Name"
+        }, 
+        {
+            "location": "/resources/dnf.copr/#description", 
+            "text": "Manages copr repositories", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/resources/dnf.copr/#parameters", 
+            "text": "state: The state of the resource. Required. Default: present.  name: The user name of the copr repo. rhscl in rhscl/perl516. Required.  project: The project name of the copr repo. perl516 in rhscl/perl516. Required.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/resources/dnf.copr/#example", 
+            "text": "dnf.copr --name rhscl --project perl516", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/resources/dnf.pkg/", 
+            "text": "Name\n\n\ndnf.pkg\n\n\nDescription\n\n\nManage packages via dnf.\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\npackage: The name of the package, or the path to the rpm-file. Required.\n\n\nversion: The version of the package. Leave empty for first version found. Set to \"latest\" to always update.\n\n\n\n\nExample\n\n\ndnf.pkg --package tmux --version latest\ndnf.pkg --package http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm", 
+            "title": "dnf.pkg"
+        }, 
+        {
+            "location": "/resources/dnf.pkg/#name", 
+            "text": "dnf.pkg", 
+            "title": "Name"
+        }, 
+        {
+            "location": "/resources/dnf.pkg/#description", 
+            "text": "Manage packages via dnf.", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/resources/dnf.pkg/#parameters", 
+            "text": "state: The state of the resource. Required. Default: present.  package: The name of the package, or the path to the rpm-file. Required.  version: The version of the package. Leave empty for first version found. Set to \"latest\" to always update.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/resources/dnf.pkg/#example", 
+            "text": "dnf.pkg --package tmux --version latest\ndnf.pkg --package http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/resources/dnf.repo/", 
+            "text": "Name\n\n\ndnf.repo\n\n\nDescription\n\n\nManages dnf/yum repositories\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nfile: name of the file in /etc/yum.repos.d/. Required.\n\n\nname: name of the repo. Required.\n\n\ndescription: A short description of the repo. Optional.\n\n\nbaseurl: URL location of the repo. Optional.\n\n\nskip: Skip the repo if unavailable. Optional. Default 1.\n\n\nenabled: Enable this repository. Optional. Default 1.\n\n\ngpgcheck: Check RPMs for this repo. Optional. Default 0.\n\n\ngpgkey: Location of the key to check. Optional. Default \"\".\n\n\n\n\nExample\n\n\ndnf.repo --file fedora-negativo17.repo --name negativo17 --description \\\n  \nNegativo 17's repo\n --baseurl 'http://negativo17.org/repos/flash-plugin/fedora-$releasever/$basearch/'", 
+            "title": "dnf.repo"
+        }, 
+        {
+            "location": "/resources/dnf.repo/#name", 
+            "text": "dnf.repo", 
+            "title": "Name"
+        }, 
+        {
+            "location": "/resources/dnf.repo/#description", 
+            "text": "Manages dnf/yum repositories", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/resources/dnf.repo/#parameters", 
+            "text": "state: The state of the resource. Required. Default: present.  file: name of the file in /etc/yum.repos.d/. Required.  name: name of the repo. Required.  description: A short description of the repo. Optional.  baseurl: URL location of the repo. Optional.  skip: Skip the repo if unavailable. Optional. Default 1.  enabled: Enable this repository. Optional. Default 1.  gpgcheck: Check RPMs for this repo. Optional. Default 0.  gpgkey: Location of the key to check. Optional. Default \"\".", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/resources/dnf.repo/#example", 
+            "text": "dnf.repo --file fedora-negativo17.repo --name negativo17 --description \\\n   Negativo 17's repo  --baseurl 'http://negativo17.org/repos/flash-plugin/fedora-$releasever/$basearch/'", 
+            "title": "Example"
+        }, 
+        {
             "location": "/resources/dpkg.debconf/", 
             "text": "Name\n\n\ndpkg.debconf\n\n\nDescription\n\n\nManages debconf entries\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\npackage: The package to configure. Required.\n\n\nquestion: The debconf question. Required.\n\n\nvtype: The vtype of the debconf setting. Required.\n\n\nvalue: The answer/setting. Required.\n\n\n\n\nExample\n\n\ndpkg.debconf --package mysql-server --question mysql-server/root_password\n               --vtype password --value mypassword", 
             "title": "dpkg.debconf"
@@ -357,7 +432,7 @@
         }, 
         {
             "location": "/resources/file.line/", 
-            "text": "Name\n\n\nfile.line\n\n\nDescription\n\n\nManages single lines in a file.\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nfile: The file that the line belongs to. Required.\n\n\nline: The line to manage. Required.\n\n\nmatch: A regex to match to. Optional.\n\n\n\n\nExample\n\n\nfile.line --file /etc/memcached.conf \\\n                 --line \n-l 0.0.0.0\n --match \n^-l", 
+            "text": "Name\n\n\nfile.line\n\n\nDescription\n\n\nManages single lines in a file.\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nfile: The file that the line belongs to. Required.\n\n\nline: The line to manage. Required.\n\n\nmatch: A regex to match to. Optional.\n\n\n\n\nExample\n\n\nfile.line --file /etc/memcached.conf \\\n          --line \n-l 0.0.0.0\n --match \n^-l", 
             "title": "file.line"
         }, 
         {
@@ -377,7 +452,7 @@
         }, 
         {
             "location": "/resources/file.line/#example", 
-            "text": "file.line --file /etc/memcached.conf \\\n                 --line  -l 0.0.0.0  --match  ^-l", 
+            "text": "file.line --file /etc/memcached.conf \\\n          --line  -l 0.0.0.0  --match  ^-l", 
             "title": "Example"
         }, 
         {
@@ -637,7 +712,7 @@
         }, 
         {
             "location": "/resources/os.useradd/", 
-            "text": "Name\n\n\nos.useradd\n\n\nDescription\n\n\nManages users\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nuser: The user Required.\n\n\nuid: The uid of the user Optional.\n\n\ngid: The gid of the user Optional.\n\n\ncreatehome: Whether to create the homedir. Default: false.\n\n\nsudo: Whether to give sudo ability: Default: false.\n\n\nshell: The shell of the user. Default /usr/sbin/nologin.\n\n\ncomment: The comment field. Optional.\n\n\nhomedir: The homedir of the user. Optional.\n\n\npasswd: The password hash. Optional.\n\n\ngroups: Supplemental groups of the user. Optional.\n\n\nsystem: Whether the user is a system user or not. Default: false\n\n\n\n\nExample\n\n\nos.useradd --user jdoe --uid 999 --createhome true --homedir /home/jdoe\n               --shell /bin/bash --comment \nJohn Doe\n\n\n\n\n\nNotes\n\n\nThe \n--system true\n flag is only useful during a create. If the user already\nexists and you choose to change it into a system using with the \n--system\n\nflag, it's best to delete the user and recreate it.", 
+            "text": "Name\n\n\nos.useradd\n\n\nDescription\n\n\nManages users\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nuser: The user Required.\n\n\nuid: The uid of the user Optional.\n\n\ngid: The gid of the user Optional.\n\n\ncreatehome: Whether to create the homedir. Default: false.\n\n\nsudo: Whether to give sudo ability: Default: false.\n\n\nshell: The shell of the user. Default /usr/sbin/nologin.\n\n\ncomment: The comment field. Optional.\n\n\nhomedir: The homedir of the user. Optional.\n\n\npasswd: The password hash. Optional.\n\n\ngroups: Supplemental groups of the user. Optional.\n\n\nsystem: Whether the user is a system user or not. Default: false\n\n\n\n\nExample\n\n\nos.useradd --user jdoe --uid 999 --createhome true --homedir /home/jdoe \\\n           --shell /bin/bash --comment \nJohn Doe\n\n\n\n\n\nNotes\n\n\nThe \n--system true\n flag is only useful during a create. If the user already\nexists and you choose to change it into a system using with the \n--system\n\nflag, it's best to delete the user and recreate it.", 
             "title": "os.useradd"
         }, 
         {
@@ -657,7 +732,7 @@
         }, 
         {
             "location": "/resources/os.useradd/#example", 
-            "text": "os.useradd --user jdoe --uid 999 --createhome true --homedir /home/jdoe\n               --shell /bin/bash --comment  John Doe", 
+            "text": "os.useradd --user jdoe --uid 999 --createhome true --homedir /home/jdoe \\\n           --shell /bin/bash --comment  John Doe", 
             "title": "Example"
         }, 
         {
