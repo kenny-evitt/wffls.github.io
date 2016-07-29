@@ -1,10 +1,10 @@
 site_name: Waffles
-site_url: 'https://waffles.oqtl.ca'
+site_url: 'https://wffls.github.io'
 site_description: 'Simple Configuration Tools'
 repo_url: 'https://github.com/wffls'
 remote_branch: 'master'
 theme: 'readthedocs'
-google_analytics: ['UA-75603-16', 'waffles.oqtl.ca']
+google_analytics: ['UA-75603-16', 'wffls.github.io']
 
 markdown_extensions:
   - admonition
