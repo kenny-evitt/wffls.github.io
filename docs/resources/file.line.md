@@ -17,6 +17,6 @@ Manages single lines in a file.
 
 ```bash
 file.line --file /etc/memcached.conf \
-                 --line "-l 0.0.0.0" --match "^-l"
+          --line "-l 0.0.0.0" --match "^-l"
 ```
 

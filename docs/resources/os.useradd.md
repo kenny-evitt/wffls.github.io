@@ -24,8 +24,8 @@ Manages users
 ### Example
 
 ```bash
-os.useradd --user jdoe --uid 999 --createhome true --homedir /home/jdoe
-               --shell /bin/bash --comment "John Doe"
+os.useradd --user jdoe --uid 999 --createhome true --homedir /home/jdoe \
+           --shell /bin/bash --comment "John Doe"
 ```
 
 ### Notes
