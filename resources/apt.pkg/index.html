@@ -40,7 +40,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-75603-16', 'waffles.oqtl.ca');
+      ga('create', 'UA-75603-16', 'wffls.github.io');
       ga('send', 'pageview');
   </script>
   
@@ -135,6 +135,13 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../apt.source/">apt.source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../augeas.generic/">augeas.generic</a>
         
     </li>
 
@@ -337,6 +344,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../ruby.gem/">ruby.gem</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../service.sysv/">service.sysv</a>
         
     </li>
@@ -407,6 +421,7 @@
 <ul>
 <li>state: The state of the resource. Required. Default: present.</li>
 <li>package: The name of the package. Required.</li>
+<li>name: Alias for package.</li>
 <li>version: The version of the package. Leave empty for first version found. Set to "latest" to always update.</li>
 </ul>
 <h3 id="example">Example</h3>

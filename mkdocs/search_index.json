@@ -102,7 +102,7 @@
         }, 
         {
             "location": "/resources/apt.pkg/", 
-            "text": "Name\n\n\napt.pkg\n\n\nDescription\n\n\nManage packages via apt.\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\npackage: The name of the package. Required.\n\n\nversion: The version of the package. Leave empty for first version found. Set to \"latest\" to always update.\n\n\n\n\nExample\n\n\napt.pkg --package tmux --version latest", 
+            "text": "Name\n\n\napt.pkg\n\n\nDescription\n\n\nManage packages via apt.\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\npackage: The name of the package. Required.\n\n\nname: Alias for package.\n\n\nversion: The version of the package. Leave empty for first version found. Set to \"latest\" to always update.\n\n\n\n\nExample\n\n\napt.pkg --package tmux --version latest", 
             "title": "apt.pkg"
         }, 
         {
@@ -117,7 +117,7 @@
         }, 
         {
             "location": "/resources/apt.pkg/#parameters", 
-            "text": "state: The state of the resource. Required. Default: present.  package: The name of the package. Required.  version: The version of the package. Leave empty for first version found. Set to \"latest\" to always update.", 
+            "text": "state: The state of the resource. Required. Default: present.  package: The name of the package. Required.  name: Alias for package.  version: The version of the package. Leave empty for first version found. Set to \"latest\" to always update.", 
             "title": "Parameters"
         }, 
         {
@@ -127,7 +127,7 @@
         }, 
         {
             "location": "/resources/apt.ppa/", 
-            "text": "Name\n\n\napt.ppa\n\n\nDescription\n\n\nManages PPA repositories\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nppa: The PPA. Required.\n\n\nrefresh: run apt-get update if the PPA was modified. Default: true.\n\n\n\n\nExample\n\n\napt.ppa --ppa ppa:chris-lea/redis-server", 
+            "text": "Name\n\n\napt.ppa\n\n\nDescription\n\n\nManages PPA repositories\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nppa: The PPA. Required.\n\n\nrefresh: run apt-get update if the PPA was modified. Default: true.\n\n\n\n\nExample\n\n\napt.ppa --ppa chris-lea/redis-server", 
             "title": "apt.ppa"
         }, 
         {
@@ -147,7 +147,7 @@
         }, 
         {
             "location": "/resources/apt.ppa/#example", 
-            "text": "apt.ppa --ppa ppa:chris-lea/redis-server", 
+            "text": "apt.ppa --ppa chris-lea/redis-server", 
             "title": "Example"
         }, 
         {
@@ -173,6 +173,56 @@
         {
             "location": "/resources/apt.source/#example", 
             "text": "apt.source --name lxc --uri http://ppa.launchpad.net/ubuntu-lxc/stable/ubuntu \\\n                  --distribution trusty --component main", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/resources/augeas.generic/", 
+            "text": "Name\n\n\naugeas.generic\n\n\nDescription\n\n\nChange a file using Augeas\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nname: An arbitrary name for the resource. Required. namevar.\n\n\nlens: The Augeas lens to use without the .lns extension. Required.\n\n\nlens_path: A custom directory that contain lenses. Optional. Multi-var.\n\n\ncommand: A single Augeas command to run. Optional. Multi-var.\n\n\nonlyif: A match conditional to check prior to running commands. If \ntrue\n, the command(s) are run. Optional.\n\n\nnotif: The same as \nonlyif\n but when the match should fail. Optional.\n\n\nfile: The file to modify. Required. namevar.\n\n\n\n\nonlyif / notif Conditional Tests\n\n\nonlyif\n and \nnotif\n tests have the following format:\n\n\n--onlyif \npath\n \nfunction\n \noperator\n \ncomparison\n\n\n\n\n\nSize\n\n\nSize compares the amount of matches.\n\n\n\n\nsize -lt 1\n\n\nsize -gt 1\n\n\nAny numerical comparisons\n\n\n\n\nPath\n\n\n\n\n\n\nWill compare the returned path(s) with a string:\n\n\n\n\n\n\npath not_include \nstring\n\n\n\n\npath include \nstring\n\n\npath is \nstring\n\n\npath is_not \nstring\n\n\n\n\nResult\n\n\nResult will compare the returned result(s) with a string:\n\n\n\n\nresult not_include \nstring\n\n\nresult include \nstring\n\n\nresult is \nstring\n\n\nresult is_not \nstring\n\n\n\n\nConditional Test Examples\n\n\nAssume \n/files/etc/hosts\n:\n\n\n\n\n*/ipaddr[. =~ regexp(\"127.*\")]\n\n\n*/ipaddr[. =~ regexp(\"127.*\")] size -lt 1\n\n\n*/ipaddr[. =~ regexp(\"127.*\")] size -gt 1\n\n\n*/ipaddr[. =~ regexp(\"127.*\")] path not_include 127.0.0.1\n\n\n*/ipaddr[. = \"127.0.0.1\"]/../canonical result include localhost\n\n\n\n\nExample\n\n\naugeas.generic --name test --lens Hosts --file /root/hosts \\\n  --command \nset *[canonical = 'localhost'][1]/ipaddr '10.3.3.27'\n \\\n  --onlyif \n*/ipaddr[. = '127.0.0.1']/../canonical result include 'localhost'\n\n\naugeas.generic --name test2 --lens Hosts --file /root/hosts \\\n  --command \nset 0/ipaddr '8.8.8.8'\n \\\n  --command \nset 0/canonical 'google.com'\n \\\n  --onlyif \n*/ipaddr[. = '8.8.8.8'] result not_include '8.8.8.8'\n\n\naugeas.generic --name test3 --lens Hosts --file /root/hosts \\\n  --command \nset 0/ipaddr '1.1.1.1'\n \\\n  --command \nset 0/canonical 'foobar.com'\n \\\n  --onlyif \n*/ipaddr[. = '1.1.1.1'] path not_include 'ipaddr'\n\n\naugeas.generic --name test4 --lens Hosts --file /root/hosts \\\n  --command \nset 0/ipaddr '2.2.2.2'\n \\\n  --command \nset 0/canonical 'barfoo.com'\n \\\n  --onlyif \n*/ipaddr[. = '2.2.2.2'] size -eq 0\n\n\naugeas.generic --name test5 --lens Hosts --file /root/hosts \\\n  --command \nset 0/ipaddr '3.3.3.3'\n \\\n  --command \nset 0/canonical 'bazbar.com'\n \\\n  --onlyif \n*/ipaddr[. = '3.3.3.3'] size -lt 1\n\n\n\n\n\n# Declare the resource title\n  waffles_resource=\"augeas.generic\"\n\n\n# Check if all dependencies are installed\n  local _wrd=(\"augtool\" \"grep\" \"sed\")\n  if ! waffles.resource.check_dependencies \"${_wrd[@]}\" ; then\n    return 1\n  fi\n\n\n# Resource Options\n  local -A options\n  local -a command\n  local -a lens_path\n  waffles.options.create_option state        \"present\"\n  waffles.options.create_option name         \"\nrequired\n\"\n  waffles.options.create_option lens         \"\nrequired\n\"\n  waffles.options.create_mv_option command   \"\nrequired\n\"\n  waffles.options.create_option file         \"\nrequired\n\"\n  waffles.options.create_mv_option lens_path\n  waffles.options.create_option onlyif\n  waffles.options.create_option notif\n  waffles.options.parse_options \"$@\"\n  if [[ $? != 0 ]]; then\n    return $?\n  fi\n\n\n# Local Variables\n  local _name=\"${options[name]}\"\n  local _file=\"${options[file]}\"\n  local _file_path=\"/files$_file\"\n  local _lens=\"${options[lens]}\"\n  local -a _augeas_init=()\n\n\n# Internal Resource Configuration\n  if [[ $(array.length lens_path) -gt 0 ]]; then\n    for lp in \"${lens_path[@]}\"; do\n      _lens_path=\"-I $lp \"\n    done\n  fi\n\n\n# Prep the augtool session\n  _augeas_init+=(\"set /augeas/load/$_lens/lens ${_lens}.lns\")\n  _augeas_init+=(\"set /augeas/load/$_lens/incl $_file\")\n  _augeas_init+=(\"load\")\n\n\n# Process the resource\n  waffles.resource.process $waffles_resource \"$_name\"\n}\n\n\nlocal _test _return _return_expected _commands _pid _error _testpath\n  local _path _function _operator _comparison _c\n  local -a _result\n  local -a _parts\n  local -a _augeas_commands=( \"${_augeas_init[@]}\" )\n\n\n# If \nonlyif\n or \nnotif\n was specified, check and see the result of the command.\n  if [[ -n ${options[onlyif]} ]] || [[ -n ${options[notif]} ]]; then\n    if [[ -n ${options[onlyif]} ]]; then\n      _return_expected=0\n      _parts=(${options[onlyif]})\n    else\n      _return_expected=1\n      _parts=(${options[notif]})\n    fi\n\n\n# Remove possible surrounding quotes\narray.pop _parts _comparison\n_comparison=$(echo $_comparison | sed -e 's/^\"//' -e 's/\"$//' -e \"s/^'//\" -e \"s/'$//\")\n\narray.pop _parts _operator\narray.pop _parts _function\n\n_path=$(array.join _parts \" \")\n_path=\"${_file_path}/$_path\"\n\ncase \"$_function\" in\n  size)\n    _test=\"size\"\n    ;;\n  path)\n    _test=\"path_or_result\"\n    ;;\n  result)\n    _test=\"path_or_result\"\n    ;;\n  *)\n    _test=\"path_exists\"\n    if [[ -n ${options[onlyif]} ]]; then\n      _path=\"${_file_path}/${options[onlyif]}\"\n    else\n      _path=\"${_file_path}/${options[notif]}\"\n    fi\n    ;;\nesac\n\n_augeas_commands+=(\"match $_path\")\n_commands=$(IFS=$'\\n'; echo \"${_augeas_commands[*]}\")\n_pid=$$\n\nfor c in \"${_augeas_commands[@]}\"; do\n  log.debug \"$c\"\ndone\n\nmapfile -t _result \n \n(augtool $_lens_path -A 2\n/tmp/augeas_error.$_pid \n \"$_commands\" | grep -v \"no matches\")\n\nif [[ -s \"/tmp/augeas_error.$_pid\" ]]; then\n  _error=$(\n/tmp/augeas_error.$_pid)\nfi\n\nexec.mute rm /tmp/augeas_error.$_pid\n\nif [[ -n $_error ]]; then\n  log.error \"Augeas error: $_error\"\n  waffles_resource_current_state=\"error\"\n  return\nfi\n\naugeas.generic.test_${_test}\n_return=$?\n\nif [[ $_return == $_return_expected ]]; then\n  waffles_resource_current_state=\"absent\"\n  return\nfi\n\n\n\nelse\n    # Run the set of commands and see if they were successful.\n    for c in \"${command[@]}\"; do\n      _c=($c)\n      _c[1]=\"${_file_path}/${_c[1]}\"\n      c=$(array.join _c \" \")\n\n\n  _augeas_commands+=(\"$c\")\ndone\n_augeas_commands+=(\"save\")\n_augeas_commands+=(\"print /augeas/events/saved\")\n\nfor c in \"${_augeas_commands[@]}\"; do\n  log.debug \"$c\"\ndone\n\n_commands=$(IFS=$'\\n'; echo \"${_augeas_commands[*]}\")\n_pid=$$\n_result=$(augtool $_lens_path -An 2\n/tmp/augeas_error.$_pid \n \"$_commands\" | grep -v Saved)\n\nif [[ -s \"/tmp/augeas_error.$_pid\" ]]; then\n  _error=$(\n/tmp/augeas_error.$_pid)\nfi\n\nif [[ -f \"${_file}.augnew\" ]]; then\n  exec.mute rm \"${_file}.augnew\"\nfi\n\nexec.mute rm /tmp/augeas_error.$_pid\n\nif [[ -n $_error ]]; then\n  log.error \"Augeas error: $_error\"\n  waffles_resource_current_state=\"error\"\n  return\nfi\n\n_return=\"/augeas/events/saved = \\\"$_file_path\\\"\"\nif [[ $_result == $_return  ]]; then\n  waffles_resource_current_state=\"absent\"\n  return\nelif [[ $_result =~ ^error ]]; then\n  log.error \"Error updating $_file.\"\n  waffles_resource_current_state=\"error\"\n  return 1\nfi\n\n\n\nfi\n\n\nwaffles_resource_current_state=\"present\"\n}\n\n\nlocal _result _return _c _pid\n  local -a _augeas_commands=( \"${_augeas_init[@]}\" )\n\n\n# Run the set of commands and see if they were successful.\n  for c in \"${command[@]}\"; do\n    _c=($c)\n    _c[1]=\"${_file_path}/${_c[1]}\"\n    c=$(array.join _c \" \")\n\n\n_augeas_commands+=(\"$c\")\n\n\n\ndone\n  _augeas_commands+=(\"save\")\n  _augeas_commands+=(\"print /augeas/events/saved\")\n\n\nfor c in \"${_augeas_commands[@]}\"; do\n    log.debug \"$c\"\n  done\n\n\n_commands=$(IFS=$'\\n'; echo \"${_augeas_commands[*]}\")\n  _result=$(augtool $_lens_path -A 2\n/tmp/augeas_error.$_pid \n \"$_commands\" | grep -v Saved)\n\n\nif [[ -s \"/tmp/augeas_error.$_pid\" ]]; then\n    _error=$(\n/tmp/augeas_error.$_pid)\n  fi\n\n\nexec.mute rm /tmp/augeas_error.$_pid\n\n\nif [[ -n $_error ]]; then\n    log.error \"Augeas error: $_error\"\n    return\n  fi\n\n\n_return=\"/augeas/events/saved = \\\"$_file_path\\\"\"\n  if [[ $_result == $_return  ]]; then\n    waffles_resource_current_state=\"absent\"\n    return\n  elif [[ $_result =~ ^error ]]; then\n    log.error \"Error updating $_file.\"\n    return 1\n  fi\n}\n\n\naugeas.generic.delete\n  augeas.generic.create\n}\n\n\nlog.warn \"Unable to perform deletions on Augeas resources.\"\n  return\n}\n\n\nlocal _line_count=$(array.length _result)\n  if [ $_line_count $_operator $_comparison ]; then\n    return 0\n  else\n    return 1\n  fi\n}\n\n\nlocal _match=\"false\"\n  local _part _c\n\n\nfor r in \"${_result[@]}\"; do\n    string.split \"$r\" \" = \"\n    if [[ $_function == \"path\" ]]; then\n      _part=\"${\nsplit[0]}\"\n    else\n      _part=\"${\nsplit[1]}\"\n    fi\n\n\nif [[ $_operator == \"include\" ]] || [[ $_operator == \"not_include\" ]]; then\n  if [[ $_part =~ $_comparison ]]; then\n    _match=\"true\"\n    break\n  fi\nelif [[ $_operator == \"is\" ]] || [[ $_operator == \"is_not\" ]]; then\n  if [[ $_part == $_comparison ]]; then\n    _match=\"true\"\n    break\n  fi\nfi\n\n\n\ndone\n\n\nif [[ $_operator == \"include\" ]] || [[ $_operator == \"is\" ]]; then\n    if [[ $_match == \"true\" ]]; then\n      return 0\n    else\n      return 1\n    fi\n  elif [[ $_operator == \"not_include\" ]] || [[ $_operator == \"is_not\" ]]; then\n    if [[ $_match == \"true\" ]]; then\n      return 1\n    else\n      return 0\n    fi\n  fi\n}\n\n\nlocal _match=\"false\"\n\n\nif [[ $(array.length _result) -gt 0 ]]; then\n    return 0\n  else\n    return 1\n  fi\n}", 
+            "title": "augeas.generic"
+        }, 
+        {
+            "location": "/resources/augeas.generic/#name", 
+            "text": "augeas.generic", 
+            "title": "Name"
+        }, 
+        {
+            "location": "/resources/augeas.generic/#description", 
+            "text": "Change a file using Augeas", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/resources/augeas.generic/#parameters", 
+            "text": "state: The state of the resource. Required. Default: present.  name: An arbitrary name for the resource. Required. namevar.  lens: The Augeas lens to use without the .lns extension. Required.  lens_path: A custom directory that contain lenses. Optional. Multi-var.  command: A single Augeas command to run. Optional. Multi-var.  onlyif: A match conditional to check prior to running commands. If  true , the command(s) are run. Optional.  notif: The same as  onlyif  but when the match should fail. Optional.  file: The file to modify. Required. namevar.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/resources/augeas.generic/#onlyif-notif-conditional-tests", 
+            "text": "onlyif  and  notif  tests have the following format:  --onlyif  path   function   operator   comparison", 
+            "title": "onlyif / notif Conditional Tests"
+        }, 
+        {
+            "location": "/resources/augeas.generic/#size", 
+            "text": "Size compares the amount of matches.   size -lt 1  size -gt 1  Any numerical comparisons", 
+            "title": "Size"
+        }, 
+        {
+            "location": "/resources/augeas.generic/#path", 
+            "text": "Will compare the returned path(s) with a string:    path not_include  string   path include  string  path is  string  path is_not  string", 
+            "title": "Path"
+        }, 
+        {
+            "location": "/resources/augeas.generic/#result", 
+            "text": "Result will compare the returned result(s) with a string:   result not_include  string  result include  string  result is  string  result is_not  string", 
+            "title": "Result"
+        }, 
+        {
+            "location": "/resources/augeas.generic/#conditional-test-examples", 
+            "text": "Assume  /files/etc/hosts :   */ipaddr[. =~ regexp(\"127.*\")]  */ipaddr[. =~ regexp(\"127.*\")] size -lt 1  */ipaddr[. =~ regexp(\"127.*\")] size -gt 1  */ipaddr[. =~ regexp(\"127.*\")] path not_include 127.0.0.1  */ipaddr[. = \"127.0.0.1\"]/../canonical result include localhost", 
+            "title": "Conditional Test Examples"
+        }, 
+        {
+            "location": "/resources/augeas.generic/#example", 
+            "text": "augeas.generic --name test --lens Hosts --file /root/hosts \\\n  --command  set *[canonical = 'localhost'][1]/ipaddr '10.3.3.27'  \\\n  --onlyif  */ipaddr[. = '127.0.0.1']/../canonical result include 'localhost' \n\naugeas.generic --name test2 --lens Hosts --file /root/hosts \\\n  --command  set 0/ipaddr '8.8.8.8'  \\\n  --command  set 0/canonical 'google.com'  \\\n  --onlyif  */ipaddr[. = '8.8.8.8'] result not_include '8.8.8.8' \n\naugeas.generic --name test3 --lens Hosts --file /root/hosts \\\n  --command  set 0/ipaddr '1.1.1.1'  \\\n  --command  set 0/canonical 'foobar.com'  \\\n  --onlyif  */ipaddr[. = '1.1.1.1'] path not_include 'ipaddr' \n\naugeas.generic --name test4 --lens Hosts --file /root/hosts \\\n  --command  set 0/ipaddr '2.2.2.2'  \\\n  --command  set 0/canonical 'barfoo.com'  \\\n  --onlyif  */ipaddr[. = '2.2.2.2'] size -eq 0 \n\naugeas.generic --name test5 --lens Hosts --file /root/hosts \\\n  --command  set 0/ipaddr '3.3.3.3'  \\\n  --command  set 0/canonical 'bazbar.com'  \\\n  --onlyif  */ipaddr[. = '3.3.3.3'] size -lt 1   # Declare the resource title\n  waffles_resource=\"augeas.generic\"  # Check if all dependencies are installed\n  local _wrd=(\"augtool\" \"grep\" \"sed\")\n  if ! waffles.resource.check_dependencies \"${_wrd[@]}\" ; then\n    return 1\n  fi  # Resource Options\n  local -A options\n  local -a command\n  local -a lens_path\n  waffles.options.create_option state        \"present\"\n  waffles.options.create_option name         \" required \"\n  waffles.options.create_option lens         \" required \"\n  waffles.options.create_mv_option command   \" required \"\n  waffles.options.create_option file         \" required \"\n  waffles.options.create_mv_option lens_path\n  waffles.options.create_option onlyif\n  waffles.options.create_option notif\n  waffles.options.parse_options \"$@\"\n  if [[ $? != 0 ]]; then\n    return $?\n  fi  # Local Variables\n  local _name=\"${options[name]}\"\n  local _file=\"${options[file]}\"\n  local _file_path=\"/files$_file\"\n  local _lens=\"${options[lens]}\"\n  local -a _augeas_init=()  # Internal Resource Configuration\n  if [[ $(array.length lens_path) -gt 0 ]]; then\n    for lp in \"${lens_path[@]}\"; do\n      _lens_path=\"-I $lp \"\n    done\n  fi  # Prep the augtool session\n  _augeas_init+=(\"set /augeas/load/$_lens/lens ${_lens}.lns\")\n  _augeas_init+=(\"set /augeas/load/$_lens/incl $_file\")\n  _augeas_init+=(\"load\")  # Process the resource\n  waffles.resource.process $waffles_resource \"$_name\"\n}  local _test _return _return_expected _commands _pid _error _testpath\n  local _path _function _operator _comparison _c\n  local -a _result\n  local -a _parts\n  local -a _augeas_commands=( \"${_augeas_init[@]}\" )  # If  onlyif  or  notif  was specified, check and see the result of the command.\n  if [[ -n ${options[onlyif]} ]] || [[ -n ${options[notif]} ]]; then\n    if [[ -n ${options[onlyif]} ]]; then\n      _return_expected=0\n      _parts=(${options[onlyif]})\n    else\n      _return_expected=1\n      _parts=(${options[notif]})\n    fi  # Remove possible surrounding quotes\narray.pop _parts _comparison\n_comparison=$(echo $_comparison | sed -e 's/^\"//' -e 's/\"$//' -e \"s/^'//\" -e \"s/'$//\")\n\narray.pop _parts _operator\narray.pop _parts _function\n\n_path=$(array.join _parts \" \")\n_path=\"${_file_path}/$_path\"\n\ncase \"$_function\" in\n  size)\n    _test=\"size\"\n    ;;\n  path)\n    _test=\"path_or_result\"\n    ;;\n  result)\n    _test=\"path_or_result\"\n    ;;\n  *)\n    _test=\"path_exists\"\n    if [[ -n ${options[onlyif]} ]]; then\n      _path=\"${_file_path}/${options[onlyif]}\"\n    else\n      _path=\"${_file_path}/${options[notif]}\"\n    fi\n    ;;\nesac\n\n_augeas_commands+=(\"match $_path\")\n_commands=$(IFS=$'\\n'; echo \"${_augeas_commands[*]}\")\n_pid=$$\n\nfor c in \"${_augeas_commands[@]}\"; do\n  log.debug \"$c\"\ndone\n\nmapfile -t _result    (augtool $_lens_path -A 2 /tmp/augeas_error.$_pid   \"$_commands\" | grep -v \"no matches\")\n\nif [[ -s \"/tmp/augeas_error.$_pid\" ]]; then\n  _error=$( /tmp/augeas_error.$_pid)\nfi\n\nexec.mute rm /tmp/augeas_error.$_pid\n\nif [[ -n $_error ]]; then\n  log.error \"Augeas error: $_error\"\n  waffles_resource_current_state=\"error\"\n  return\nfi\n\naugeas.generic.test_${_test}\n_return=$?\n\nif [[ $_return == $_return_expected ]]; then\n  waffles_resource_current_state=\"absent\"\n  return\nfi  else\n    # Run the set of commands and see if they were successful.\n    for c in \"${command[@]}\"; do\n      _c=($c)\n      _c[1]=\"${_file_path}/${_c[1]}\"\n      c=$(array.join _c \" \")    _augeas_commands+=(\"$c\")\ndone\n_augeas_commands+=(\"save\")\n_augeas_commands+=(\"print /augeas/events/saved\")\n\nfor c in \"${_augeas_commands[@]}\"; do\n  log.debug \"$c\"\ndone\n\n_commands=$(IFS=$'\\n'; echo \"${_augeas_commands[*]}\")\n_pid=$$\n_result=$(augtool $_lens_path -An 2 /tmp/augeas_error.$_pid   \"$_commands\" | grep -v Saved)\n\nif [[ -s \"/tmp/augeas_error.$_pid\" ]]; then\n  _error=$( /tmp/augeas_error.$_pid)\nfi\n\nif [[ -f \"${_file}.augnew\" ]]; then\n  exec.mute rm \"${_file}.augnew\"\nfi\n\nexec.mute rm /tmp/augeas_error.$_pid\n\nif [[ -n $_error ]]; then\n  log.error \"Augeas error: $_error\"\n  waffles_resource_current_state=\"error\"\n  return\nfi\n\n_return=\"/augeas/events/saved = \\\"$_file_path\\\"\"\nif [[ $_result == $_return  ]]; then\n  waffles_resource_current_state=\"absent\"\n  return\nelif [[ $_result =~ ^error ]]; then\n  log.error \"Error updating $_file.\"\n  waffles_resource_current_state=\"error\"\n  return 1\nfi  fi  waffles_resource_current_state=\"present\"\n}  local _result _return _c _pid\n  local -a _augeas_commands=( \"${_augeas_init[@]}\" )  # Run the set of commands and see if they were successful.\n  for c in \"${command[@]}\"; do\n    _c=($c)\n    _c[1]=\"${_file_path}/${_c[1]}\"\n    c=$(array.join _c \" \")  _augeas_commands+=(\"$c\")  done\n  _augeas_commands+=(\"save\")\n  _augeas_commands+=(\"print /augeas/events/saved\")  for c in \"${_augeas_commands[@]}\"; do\n    log.debug \"$c\"\n  done  _commands=$(IFS=$'\\n'; echo \"${_augeas_commands[*]}\")\n  _result=$(augtool $_lens_path -A 2 /tmp/augeas_error.$_pid   \"$_commands\" | grep -v Saved)  if [[ -s \"/tmp/augeas_error.$_pid\" ]]; then\n    _error=$( /tmp/augeas_error.$_pid)\n  fi  exec.mute rm /tmp/augeas_error.$_pid  if [[ -n $_error ]]; then\n    log.error \"Augeas error: $_error\"\n    return\n  fi  _return=\"/augeas/events/saved = \\\"$_file_path\\\"\"\n  if [[ $_result == $_return  ]]; then\n    waffles_resource_current_state=\"absent\"\n    return\n  elif [[ $_result =~ ^error ]]; then\n    log.error \"Error updating $_file.\"\n    return 1\n  fi\n}  augeas.generic.delete\n  augeas.generic.create\n}  log.warn \"Unable to perform deletions on Augeas resources.\"\n  return\n}  local _line_count=$(array.length _result)\n  if [ $_line_count $_operator $_comparison ]; then\n    return 0\n  else\n    return 1\n  fi\n}  local _match=\"false\"\n  local _part _c  for r in \"${_result[@]}\"; do\n    string.split \"$r\" \" = \"\n    if [[ $_function == \"path\" ]]; then\n      _part=\"${ split[0]}\"\n    else\n      _part=\"${ split[1]}\"\n    fi  if [[ $_operator == \"include\" ]] || [[ $_operator == \"not_include\" ]]; then\n  if [[ $_part =~ $_comparison ]]; then\n    _match=\"true\"\n    break\n  fi\nelif [[ $_operator == \"is\" ]] || [[ $_operator == \"is_not\" ]]; then\n  if [[ $_part == $_comparison ]]; then\n    _match=\"true\"\n    break\n  fi\nfi  done  if [[ $_operator == \"include\" ]] || [[ $_operator == \"is\" ]]; then\n    if [[ $_match == \"true\" ]]; then\n      return 0\n    else\n      return 1\n    fi\n  elif [[ $_operator == \"not_include\" ]] || [[ $_operator == \"is_not\" ]]; then\n    if [[ $_match == \"true\" ]]; then\n      return 1\n    else\n      return 0\n    fi\n  fi\n}  local _match=\"false\"  if [[ $(array.length _result) -gt 0 ]]; then\n    return 0\n  else\n    return 1\n  fi\n}", 
             "title": "Example"
         }, 
         {
@@ -357,7 +407,7 @@
         }, 
         {
             "location": "/resources/dnf.repo/", 
-            "text": "Name\n\n\ndnf.repo\n\n\nDescription\n\n\nManages dnf/yum repositories\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nfile: name of the file in /etc/yum.repos.d/. Required.\n\n\nname: name of the repo. Required.\n\n\ndescription: A short description of the repo. Optional.\n\n\nbaseurl: URL location of the repo. Optional.\n\n\nskip: Skip the repo if unavailable. Optional. Default 1.\n\n\nenabled: Enable this repository. Optional. Default 1.\n\n\ngpgcheck: Check RPMs for this repo. Optional. Default 0.\n\n\ngpgkey: Location of the key to check. Optional. Default \"\".\n\n\n\n\nExample\n\n\ndnf.repo --file fedora-negativo17.repo --name negativo17 --description \\\n  \nNegativo 17's repo\n --baseurl 'http://negativo17.org/repos/flash-plugin/fedora-$releasever/$basearch/'", 
+            "text": "Name\n\n\ndnf.repo\n\n\nDescription\n\n\nManages dnf/yum repositories\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nfile: name of the file in /etc/yum.repos.d/. Required. The file \nmust\n exist already.\n\n\nname: name of the repo. Required.\n\n\ndescription: A short description of the repo. Optional.\n\n\nbaseurl: URL location of the repo. Optional.\n\n\nskip: Skip the repo if unavailable. Optional. Default 1.\n\n\nenabled: Enable this repository. Optional. Default 1.\n\n\ngpgcheck: Check RPMs for this repo. Optional. Default 0.\n\n\ngpgkey: Location of the key to check. Optional. Default \"\".\n\n\n\n\nExample\n\n\ndnf.repo --file fedora-negativo17.repo --name negativo17 --description \\\n  \nNegativo 17's repo\n --baseurl 'http://negativo17.org/repos/flash-plugin/fedora-$releasever/$basearch/'", 
             "title": "dnf.repo"
         }, 
         {
@@ -372,7 +422,7 @@
         }, 
         {
             "location": "/resources/dnf.repo/#parameters", 
-            "text": "state: The state of the resource. Required. Default: present.  file: name of the file in /etc/yum.repos.d/. Required.  name: name of the repo. Required.  description: A short description of the repo. Optional.  baseurl: URL location of the repo. Optional.  skip: Skip the repo if unavailable. Optional. Default 1.  enabled: Enable this repository. Optional. Default 1.  gpgcheck: Check RPMs for this repo. Optional. Default 0.  gpgkey: Location of the key to check. Optional. Default \"\".", 
+            "text": "state: The state of the resource. Required. Default: present.  file: name of the file in /etc/yum.repos.d/. Required. The file  must  exist already.  name: name of the repo. Required.  description: A short description of the repo. Optional.  baseurl: URL location of the repo. Optional.  skip: Skip the repo if unavailable. Optional. Default 1.  enabled: Enable this repository. Optional. Default 1.  gpgcheck: Check RPMs for this repo. Optional. Default 0.  gpgkey: Location of the key to check. Optional. Default \"\".", 
             "title": "Parameters"
         }, 
         {
@@ -407,7 +457,7 @@
         }, 
         {
             "location": "/resources/file.ini/", 
-            "text": "Name\n\n\nfile.ini\n\n\nDescription\n\n\nManages ini files/entries\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nfile: The ini file. Required.\n\n\nsection: The ini file section. Use \"\nnone\n\" to not use a section. Required.\n\n\noption: The ini file setting/option. Required.\n\n\nvalue: The value of the option. Use \"\nnone\n\" to not set a value. Required.\n\n\n\n\nExample\n\n\nfile.ini --file /etc/nova/nova.conf --section DEFAULT --option debug --value True", 
+            "text": "Name\n\n\nfile.ini\n\n\nDescription\n\n\nManages ini files/entries\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nfile: The ini file. Required. This file \nmust\n exist already.\n\n\nsection: The ini file section. Use \"\nnone\n\" to not use a section. Required.\n\n\noption: The ini file setting/option. Required.\n\n\nvalue: The value of the option. Use \"\nnone\n\" to not set a value. Required.\n\n\n\n\nExample\n\n\nfile.ini --file /etc/nova/nova.conf --section DEFAULT --option debug --value True", 
             "title": "file.ini"
         }, 
         {
@@ -422,7 +472,7 @@
         }, 
         {
             "location": "/resources/file.ini/#parameters", 
-            "text": "state: The state of the resource. Required. Default: present.  file: The ini file. Required.  section: The ini file section. Use \" none \" to not use a section. Required.  option: The ini file setting/option. Required.  value: The value of the option. Use \" none \" to not set a value. Required.", 
+            "text": "state: The state of the resource. Required. Default: present.  file: The ini file. Required. This file  must  exist already.  section: The ini file section. Use \" none \" to not use a section. Required.  option: The ini file setting/option. Required.  value: The value of the option. Use \" none \" to not set a value. Required.", 
             "title": "Parameters"
         }, 
         {
@@ -687,7 +737,7 @@
         }, 
         {
             "location": "/resources/os.symlink/", 
-            "text": "Name\n\n\nos.symlink\n\n\nDescription\n\n\nManages symlinks\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nname: The name of the link. Required.\n\n\ntarget: The target of the link.\n\n\n\n\nExample\n\n\nos.symlink --name /usr/local/man --target /usr/share/man", 
+            "text": "Name\n\n\nos.symlink\n\n\nDescription\n\n\nManages symlinks\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nname: The name of the link. Required.\n\n\ntarget: The target of the link. Optional.\n\n\noverwrite: Overwrite the link if it already exists. Optional. Defaults to false.\n\n\n\n\nExample\n\n\nos.symlink --name /usr/local/man --target /usr/share/man", 
             "title": "os.symlink"
         }, 
         {
@@ -702,7 +752,7 @@
         }, 
         {
             "location": "/resources/os.symlink/#parameters", 
-            "text": "state: The state of the resource. Required. Default: present.  name: The name of the link. Required.  target: The target of the link.", 
+            "text": "state: The state of the resource. Required. Default: present.  name: The name of the link. Required.  target: The target of the link. Optional.  overwrite: Overwrite the link if it already exists. Optional. Defaults to false.", 
             "title": "Parameters"
         }, 
         {
@@ -898,6 +948,31 @@
         {
             "location": "/resources/rabbitmq.vhost/#example", 
             "text": "rabbitmq.vhost --vhost openstack", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/resources/ruby.gem/", 
+            "text": "Name\n\n\nruby.gem\n\n\nDescription\n\n\nManage a ruby gem.\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nname: The name of the gem. Required.\n\n\nversion: The version of the gem. Optional.\n\n\nurl: A URL to install the gem from. Optional.\n\n\n\n\nExample\n\n\nruby.gem --name test-kitchen", 
+            "title": "ruby.gem"
+        }, 
+        {
+            "location": "/resources/ruby.gem/#name", 
+            "text": "ruby.gem", 
+            "title": "Name"
+        }, 
+        {
+            "location": "/resources/ruby.gem/#description", 
+            "text": "Manage a ruby gem.", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/resources/ruby.gem/#parameters", 
+            "text": "state: The state of the resource. Required. Default: present.  name: The name of the gem. Required.  version: The version of the gem. Optional.  url: A URL to install the gem from. Optional.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/resources/ruby.gem/#example", 
+            "text": "ruby.gem --name test-kitchen", 
             "title": "Example"
         }, 
         {
