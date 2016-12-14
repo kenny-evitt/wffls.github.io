@@ -14,6 +14,17 @@ pages:
   - Guides:
     - Install Waffles: 'guides/install_waffles.md'
     - Install wafflescript: 'guides/install_wafflescript.md'
+  - Functions:
+    - arrays: 'functions/arrays.md'
+    - consul: 'functions/consul.md'
+    - exec: 'functions/exec.md'
+    - ini: 'functions/ini.md'
+    - logging: 'functions/logging.md'
+    - mysql: 'functions/mysql.md'
+    - options: 'functions/options.md'
+    - resource: 'functions/resource.md'
+    - strings: 'functions/strings.md'
+    - utils: 'functions/utils.md'
   - Waffles Resources:
     - apt.key: 'resources/apt.key.md'
     - apt.pkg: 'resources/apt.pkg.md'
