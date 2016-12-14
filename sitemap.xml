@@ -4,7 +4,7 @@
     
     <url>
      <loc>https://wffls.github.io/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,13 +13,13 @@
         
     <url>
      <loc>https://wffls.github.io/guides/install_waffles/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/guides/install_wafflescript/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -29,223 +29,223 @@
         
     <url>
      <loc>https://wffls.github.io/resources/apt.key/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/apt.pkg/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/apt.ppa/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/apt.source/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/augeas.generic/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/consul.check/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/consul.service/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/consul.template/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/consul.watch/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/cron.entry/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/dnf.copr/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/dnf.pkg/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/dnf.repo/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/dpkg.debconf/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/file.ini/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/file.line/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/git.repo/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/ip6tables.rule/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/iptables.rule/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/mysql.database/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/mysql.grant/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/mysql.user/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/os.directory/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/os.file/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/os.groupadd/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/os.symlink/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/os.useradd/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/python.pip/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/python.virtualenv/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/rabbitmq.policy/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/rabbitmq.user_permissions/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/rabbitmq.user/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/rabbitmq.vhost/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/ruby.gem/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/service.sysv/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/service.upstart/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://wffls.github.io/resources/sudoers.cmd/</loc>
-     <lastmod>2016-08-28</lastmod>
+     <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
