@@ -14,7 +14,7 @@ pages:
   - Guides:
     - Install Waffles: 'guides/install_waffles.md'
     - Install wafflescript: 'guides/install_wafflescript.md'
-  - Functions:
+  - Waffles Functions:
     - arrays: 'functions/arrays.md'
     - consul: 'functions/consul.md'
     - exec: 'functions/exec.md'
