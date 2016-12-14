@@ -76,6 +76,331 @@
             "title": "Install wafflescript"
         }, 
         {
+            "location": "/functions/arrays/", 
+            "text": "Array Functions\n\n\nfunctions/arrays.sh\n contains functions to help interact with arrays and hashes/maps.\n\n\narray.contains\n\n\nReports true if element exists in an array.\n\n\nx=(foo bar baz)\nif array.contains \nx\n \nfoo\n ; then\n  echo \nExists\n\nfi\n\n\n\n\narray.join\n\n\nJoins an array into a string.\n\n\nx=(foo bar baz)\narray.join x ,\n=\n foo,bar,baz\n\n\n\n\narray.length\n\n\nReturns the length of an array.\n\n\nx=(a b c)\narray.length x\n=\n 3\n\n\n\n\narray.pop\n\n\nRemoves and the last element from array $1 and optionally stores it in $2\n\n\nx=(a b c)\narray.pop x y\necho $y\n=\n c\n\n\n\n\narray.push\n\n\nAdds an element to the end of an array.\n\n\nx=()\narray.push x foo\n\n\n\n\narray.shift\n\n\nRemoves and returns the first element from array $1 and optionally stores it in $2\n\n\nx=(a b c)\narray.shift x y\necho $y\n=\n a\n\n\n\n\narray.unshift\n\n\nAdds an element to the beginning of the array.\n\n\nx=(b c)\narray.unshift x a\n\n\n\n\n\nhash.keys\n\n\nReturns the keys of a hash / associative array.\n\n\ndeclare -A foo=(\n  [a]=1\n  [b]=2\n  [c]=3\n)\n\nhash.keys \nfoo\n\n=\n a b c\n\nx=($(hash.keys \nfoo\n))\necho \n${x[1]}\n\n=\n b", 
+            "title": "arrays"
+        }, 
+        {
+            "location": "/functions/arrays/#array-functions", 
+            "text": "functions/arrays.sh  contains functions to help interact with arrays and hashes/maps.", 
+            "title": "Array Functions"
+        }, 
+        {
+            "location": "/functions/arrays/#arraycontains", 
+            "text": "Reports true if element exists in an array.  x=(foo bar baz)\nif array.contains  x   foo  ; then\n  echo  Exists \nfi", 
+            "title": "array.contains"
+        }, 
+        {
+            "location": "/functions/arrays/#arrayjoin", 
+            "text": "Joins an array into a string.  x=(foo bar baz)\narray.join x ,\n=  foo,bar,baz", 
+            "title": "array.join"
+        }, 
+        {
+            "location": "/functions/arrays/#arraylength", 
+            "text": "Returns the length of an array.  x=(a b c)\narray.length x\n=  3", 
+            "title": "array.length"
+        }, 
+        {
+            "location": "/functions/arrays/#arraypop", 
+            "text": "Removes and the last element from array $1 and optionally stores it in $2  x=(a b c)\narray.pop x y\necho $y\n=  c", 
+            "title": "array.pop"
+        }, 
+        {
+            "location": "/functions/arrays/#arraypush", 
+            "text": "Adds an element to the end of an array.  x=()\narray.push x foo", 
+            "title": "array.push"
+        }, 
+        {
+            "location": "/functions/arrays/#arrayshift", 
+            "text": "Removes and returns the first element from array $1 and optionally stores it in $2  x=(a b c)\narray.shift x y\necho $y\n=  a", 
+            "title": "array.shift"
+        }, 
+        {
+            "location": "/functions/arrays/#arrayunshift", 
+            "text": "Adds an element to the beginning of the array.  x=(b c)\narray.unshift x a", 
+            "title": "array.unshift"
+        }, 
+        {
+            "location": "/functions/arrays/#hashkeys", 
+            "text": "Returns the keys of a hash / associative array.  declare -A foo=(\n  [a]=1\n  [b]=2\n  [c]=3\n)\n\nhash.keys  foo \n=  a b c\n\nx=($(hash.keys  foo ))\necho  ${x[1]} \n=  b", 
+            "title": "hash.keys"
+        }, 
+        {
+            "location": "/functions/consul/", 
+            "text": "Consul Functions\n\n\n\n\n\n\nConsul Functions\n\n\nconsul.get_nodes\n\n\nconsul.get_services\n\n\nconsul.get_kv\n\n\nconsul.set_kv\n\n\nconsul.delete_kv\n\n\n\n\n\n\n\n\n\n\nconsul/consul.sh\n contains helper functions for the Consul resources\n\n\nconsul.get_nodes\n\n\nReturns a list of nodes. Results are stored in \n$consul_nodes\n hash.\n\n\nOption \n--service\n: Optional. Limits results to a set of services.\n\n\nconsul.get_nodes --service consul\n\nconsul_nodes[consul-01]=\n192.168.1.1\n\nconsul_nodes[consul-02]=\n192.168.1.2\n\nconsul_nodes[consul-03]=\n192.168.1.3\n\nconsul_nodes[consul-01|port]=\n8300\n\nconsul_nodes[consul-02|port]=\n8300\n\nconsul_nodes[consul-03|port]=\n8300\n\n\n\n\n\nconsul.get_services\n\n\nReturns a list of services in the Consul catalog. Results are stored in \n$consul_services array\n.\n\n\nconsul.get_services\n\nconsul_services=(consul mysql)\n\n\n\n\nconsul.get_kv\n\n\nRetrieves the value of a key.\n\n\nconsul.get_kv --key foobar\n=\n barfoo\n\n\n\n\nconsul.set_kv\n\n\nSets a value for a key.\n\n\nconsul.set_kv --key foobar --value barfoo\n\n\n\n\nconsul.delete_kv\n\n\nDeletes a key.\n\n\nconsul.delete_kv --key foobar", 
+            "title": "consul"
+        }, 
+        {
+            "location": "/functions/consul/#consul-functions", 
+            "text": "Consul Functions  consul.get_nodes  consul.get_services  consul.get_kv  consul.set_kv  consul.delete_kv      consul/consul.sh  contains helper functions for the Consul resources", 
+            "title": "Consul Functions"
+        }, 
+        {
+            "location": "/functions/consul/#consulget_nodes", 
+            "text": "Returns a list of nodes. Results are stored in  $consul_nodes  hash.  Option  --service : Optional. Limits results to a set of services.  consul.get_nodes --service consul\n\nconsul_nodes[consul-01]= 192.168.1.1 \nconsul_nodes[consul-02]= 192.168.1.2 \nconsul_nodes[consul-03]= 192.168.1.3 \nconsul_nodes[consul-01|port]= 8300 \nconsul_nodes[consul-02|port]= 8300 \nconsul_nodes[consul-03|port]= 8300", 
+            "title": "consul.get_nodes"
+        }, 
+        {
+            "location": "/functions/consul/#consulget_services", 
+            "text": "Returns a list of services in the Consul catalog. Results are stored in  $consul_services array .  consul.get_services\n\nconsul_services=(consul mysql)", 
+            "title": "consul.get_services"
+        }, 
+        {
+            "location": "/functions/consul/#consulget_kv", 
+            "text": "Retrieves the value of a key.  consul.get_kv --key foobar\n=  barfoo", 
+            "title": "consul.get_kv"
+        }, 
+        {
+            "location": "/functions/consul/#consulset_kv", 
+            "text": "Sets a value for a key.  consul.set_kv --key foobar --value barfoo", 
+            "title": "consul.set_kv"
+        }, 
+        {
+            "location": "/functions/consul/#consuldelete_kv", 
+            "text": "Deletes a key.  consul.delete_kv --key foobar", 
+            "title": "consul.delete_kv"
+        }, 
+        {
+            "location": "/functions/exec/", 
+            "text": "Exec Functions\n\n\nfunctions/exec.sh\n contains functions to help execute commands.\n\n\nexec.capture_error\n\n\nTakes a command as input, prints the command, and detects if anything was written to \nstderr\n. If there was, the error is printed to \nstderr\n again, and if \nWAFFLES_EXIT_ON_ERROR\n is set, Waffles halts.\n\n\nexec.capture_error apt-get update\n\n\n\n\nwaffles.command_exists\n\n\nA simple wrapper around \nwhich\n.\n\n\nif [[ waffles.command_exists apt-get ]]; then\n  log.info \nWe're on a Debian-based system.\n\nfi\n\n\n\n\nexec.mute\n\n\nPrints the command being run, but suppresses the command output.\n\n\nexec.mute apt-get update\n\n\n\n\nexec.sudo\n\n\nRuns a command as another user via sudo:\n\n\nexec.sudo username tar xzvf foobar.tar.gz", 
+            "title": "exec"
+        }, 
+        {
+            "location": "/functions/exec/#exec-functions", 
+            "text": "functions/exec.sh  contains functions to help execute commands.", 
+            "title": "Exec Functions"
+        }, 
+        {
+            "location": "/functions/exec/#execcapture_error", 
+            "text": "Takes a command as input, prints the command, and detects if anything was written to  stderr . If there was, the error is printed to  stderr  again, and if  WAFFLES_EXIT_ON_ERROR  is set, Waffles halts.  exec.capture_error apt-get update", 
+            "title": "exec.capture_error"
+        }, 
+        {
+            "location": "/functions/exec/#wafflescommand_exists", 
+            "text": "A simple wrapper around  which .  if [[ waffles.command_exists apt-get ]]; then\n  log.info  We're on a Debian-based system. \nfi", 
+            "title": "waffles.command_exists"
+        }, 
+        {
+            "location": "/functions/exec/#execmute", 
+            "text": "Prints the command being run, but suppresses the command output.  exec.mute apt-get update", 
+            "title": "exec.mute"
+        }, 
+        {
+            "location": "/functions/exec/#execsudo", 
+            "text": "Runs a command as another user via sudo:  exec.sudo username tar xzvf foobar.tar.gz", 
+            "title": "exec.sudo"
+        }, 
+        {
+            "location": "/functions/ini/", 
+            "text": "ini Functions\n\n\nfunctions/ini_file.sh\n contains functions to work with ini files.\n\n\nFor the following functions, consider the example ini file:\n\n\nopt=a global option\nsingleglobal\n[section 1]\nopt=a section 1 option\n[section 2]\nopt=a section 2 option\n\n\n\n\nini_file.get_option\n\n\nReturns the line in an ini file matching the parameters.\n\n\n$ ini_file.get_option \nfile.ini\n \nsection 1\n \nopt\n\nopt=a section 1 option\n$ ini_file.get_option \nfile.ini\n \nsection 2\n \nopt\n\nopt=a section 2 option\n$ ini_file.get_option \nfile.ini\n \n__none__\n \nopt\n\nopt=a global option\n\n\n\n\nini_file.options_has_value\n\n\nReturns \n0\n if the ini file contains the requested value.\n\n\n$ ini_file.option_has_value \nfile.ini\n \nsection 1\n \nopt\n \na section 1 option\n\n0\n$ ini_file.option_has_value \nfile.ini\n \n__none__\n \nopt\n \na global option\n\n0\n$ ini_file.option_has_value \nfile.ini\n \n__none__\n \nglobal\n \na global value\n\n1\n\n\n\n\nini_file.has_section\n\n\nReturns \n0\n if the ini file contains the requested section.\n\n\n$ ini_file.has_section \nfile.ini\n \nsection 1\n\n0\n$ ini_file.has_section \nfile.ini\n \nsection 3\n\n1\n\n\n\n\nini_file.remove\n\n\nRemoves a single ini entry.\n\n\n$ ini_file.remove \nfile.ini\n \n__none__\n \nsingleglobal\n\n$ ini_file.remove \nfile.ini\n \nsection 1\n \nopt\n\n\n\n\n\nini_file.remove_section\n\n\nRemoves an entire ini section.\n\n\n$ ini_file.remove_section \nfile.ini\n \nsection 1\n\n\n\n\n\nini_file.set\n\n\nSets an entry in an ini file.\n\n\n$ ini_file.set \nfile.ini\n \nsection 1\n \nopt\n \na section 1 option\n\n$ ini_file.set \nfile.ini\n \n__none__\n \nsingleglobal\n \n__none__\n\n$ ini_file.set \nfile.ini\n \nsection 1\n \nopt\n \na section 1 option - modified", 
+            "title": "ini"
+        }, 
+        {
+            "location": "/functions/ini/#ini-functions", 
+            "text": "functions/ini_file.sh  contains functions to work with ini files.  For the following functions, consider the example ini file:  opt=a global option\nsingleglobal\n[section 1]\nopt=a section 1 option\n[section 2]\nopt=a section 2 option", 
+            "title": "ini Functions"
+        }, 
+        {
+            "location": "/functions/ini/#ini_fileget_option", 
+            "text": "Returns the line in an ini file matching the parameters.  $ ini_file.get_option  file.ini   section 1   opt \nopt=a section 1 option\n$ ini_file.get_option  file.ini   section 2   opt \nopt=a section 2 option\n$ ini_file.get_option  file.ini   __none__   opt \nopt=a global option", 
+            "title": "ini_file.get_option"
+        }, 
+        {
+            "location": "/functions/ini/#ini_fileoptions_has_value", 
+            "text": "Returns  0  if the ini file contains the requested value.  $ ini_file.option_has_value  file.ini   section 1   opt   a section 1 option \n0\n$ ini_file.option_has_value  file.ini   __none__   opt   a global option \n0\n$ ini_file.option_has_value  file.ini   __none__   global   a global value \n1", 
+            "title": "ini_file.options_has_value"
+        }, 
+        {
+            "location": "/functions/ini/#ini_filehas_section", 
+            "text": "Returns  0  if the ini file contains the requested section.  $ ini_file.has_section  file.ini   section 1 \n0\n$ ini_file.has_section  file.ini   section 3 \n1", 
+            "title": "ini_file.has_section"
+        }, 
+        {
+            "location": "/functions/ini/#ini_fileremove", 
+            "text": "Removes a single ini entry.  $ ini_file.remove  file.ini   __none__   singleglobal \n$ ini_file.remove  file.ini   section 1   opt", 
+            "title": "ini_file.remove"
+        }, 
+        {
+            "location": "/functions/ini/#ini_fileremove_section", 
+            "text": "Removes an entire ini section.  $ ini_file.remove_section  file.ini   section 1", 
+            "title": "ini_file.remove_section"
+        }, 
+        {
+            "location": "/functions/ini/#ini_fileset", 
+            "text": "Sets an entry in an ini file.  $ ini_file.set  file.ini   section 1   opt   a section 1 option \n$ ini_file.set  file.ini   __none__   singleglobal   __none__ \n$ ini_file.set  file.ini   section 1   opt   a section 1 option - modified", 
+            "title": "ini_file.set"
+        }, 
+        {
+            "location": "/functions/logging/", 
+            "text": "Logging Functions\n\n\nfunctions/logging.sh\n contains functions to help with logging.\n\n\nlog.debug\n\n\nPrints a log message at \ndebug\n level. This message will only appear if run in DEBUG mode.\n\n\nlog.debug \nFoobar\n\n\n\n\n\nlog.error\n\n\nPrints a log message at \nerror\n level.\n\n\nlog.error \nFoobar\n\n\n\n\n\nlog.info\n\n\nPrints a log message at \ninfo\n level.\n\n\nlog.info \nFoobar\n\n\n\n\n\nlog.warn\n\n\nPrints a log message at \nwarn\n level.\n\n\nlog.warn \nFoobar", 
+            "title": "logging"
+        }, 
+        {
+            "location": "/functions/logging/#logging-functions", 
+            "text": "functions/logging.sh  contains functions to help with logging.", 
+            "title": "Logging Functions"
+        }, 
+        {
+            "location": "/functions/logging/#logdebug", 
+            "text": "Prints a log message at  debug  level. This message will only appear if run in DEBUG mode.  log.debug  Foobar", 
+            "title": "log.debug"
+        }, 
+        {
+            "location": "/functions/logging/#logerror", 
+            "text": "Prints a log message at  error  level.  log.error  Foobar", 
+            "title": "log.error"
+        }, 
+        {
+            "location": "/functions/logging/#loginfo", 
+            "text": "Prints a log message at  info  level.  log.info  Foobar", 
+            "title": "log.info"
+        }, 
+        {
+            "location": "/functions/logging/#logwarn", 
+            "text": "Prints a log message at  warn  level.  log.warn  Foobar", 
+            "title": "log.warn"
+        }, 
+        {
+            "location": "/functions/mysql/", 
+            "text": "MySQL Functions\n\n\n\n\n\n\nMySQL Functions\n\n\nmysql.admin_password_set?\n\n\nmysql.mycnf\n\n\n\n\n\n\n\n\n\n\nlib/mysql/mysql.sh\n contains helper functions for the MySQL resources\n\n\nmysql.admin_password_set?\n\n\nA simple function that checks if the MySQL service has an admin password set.\n\n\nmysql.mycnf\n\n\nA function that generates a \n.my.cnf\n file.\n\n\nmysql.mycnf --filename \n/root/.my.cnf\n --user root --password password\n\n\n\n\nThis isn't a first-class resource because it simply builds on other resources.", 
+            "title": "mysql"
+        }, 
+        {
+            "location": "/functions/mysql/#mysql-functions", 
+            "text": "MySQL Functions  mysql.admin_password_set?  mysql.mycnf      lib/mysql/mysql.sh  contains helper functions for the MySQL resources", 
+            "title": "MySQL Functions"
+        }, 
+        {
+            "location": "/functions/mysql/#mysqladmin_password_set", 
+            "text": "A simple function that checks if the MySQL service has an admin password set.", 
+            "title": "mysql.admin_password_set?"
+        }, 
+        {
+            "location": "/functions/mysql/#mysqlmycnf", 
+            "text": "A function that generates a  .my.cnf  file.  mysql.mycnf --filename  /root/.my.cnf  --user root --password password  This isn't a first-class resource because it simply builds on other resources.", 
+            "title": "mysql.mycnf"
+        }, 
+        {
+            "location": "/functions/options/", 
+            "text": "Options Options\n\n\n\n\n\n\nOptions Options\n\n\nwaffles.options.create_option\n\n\nwaffles.options.create_mv_option\n\n\nwaffles.options.parse_options\n\n\n\n\n\n\n\n\n\n\nfunctions/options.sh\n contains functions related to parsing resource options.\n\n\nwaffles.options.create_option\n\n\nThis function creates an option in a waffles.resource.\n\n\nlocal -A options\nwaffles.options.create_option state   \npresent\n\nwaffles.options.create_option package \n__required__\n\nwaffles.options.create_option version\nwaffles.options.parse_options \n$@\n\n\n\n\n\nTo successfully create a set of options:\n\n\n\n\nA local \noptions\n variable must be created. If not, the options will be appended to the last resource declared.\n\n\nwaffles.options.create_option\n is used with the first argument being the option name and the second argument being an optional default value.\n\n\nIf the default value is \n__required__\n, Waffles will error and halt if the option was not set.\n\n\n\n\nwaffles.options.create_mv_option\n\n\nThis function creates a multi-value option. These types of options can be specified multiple times. In order to use, you must declare\nan array of the same name as the option. For example, the \naugeas.mail_alias\n resource looks like this:\n\n\nlocal -A options\nlocal -a destination\nwaffles.options.create_option    state       \npresent\n\nwaffles.options.create_option    account     \n__required__\n\nwaffles.options.create_mv_option destination \n__required__\n\nwaffles.options.create_option    file        \n/etc/aliases\n\nwaffles.options.parse_options    \n$@\n\n\n\n\n\nNow when declaring an alias, you can do:\n\n\naugeas.mail_alias --root --destination jdoe --destination jsmith --destination foobar\n\n\n\n\nwaffles.options.parse_options\n\n\nThis function cycles through all options that were given in a declared waffles.resource. It will report if any required options were not set.", 
+            "title": "options"
+        }, 
+        {
+            "location": "/functions/options/#options-options", 
+            "text": "Options Options  waffles.options.create_option  waffles.options.create_mv_option  waffles.options.parse_options      functions/options.sh  contains functions related to parsing resource options.", 
+            "title": "Options Options"
+        }, 
+        {
+            "location": "/functions/options/#wafflesoptionscreate_option", 
+            "text": "This function creates an option in a waffles.resource.  local -A options\nwaffles.options.create_option state    present \nwaffles.options.create_option package  __required__ \nwaffles.options.create_option version\nwaffles.options.parse_options  $@   To successfully create a set of options:   A local  options  variable must be created. If not, the options will be appended to the last resource declared.  waffles.options.create_option  is used with the first argument being the option name and the second argument being an optional default value.  If the default value is  __required__ , Waffles will error and halt if the option was not set.", 
+            "title": "waffles.options.create_option"
+        }, 
+        {
+            "location": "/functions/options/#wafflesoptionscreate_mv_option", 
+            "text": "This function creates a multi-value option. These types of options can be specified multiple times. In order to use, you must declare\nan array of the same name as the option. For example, the  augeas.mail_alias  resource looks like this:  local -A options\nlocal -a destination\nwaffles.options.create_option    state        present \nwaffles.options.create_option    account      __required__ \nwaffles.options.create_mv_option destination  __required__ \nwaffles.options.create_option    file         /etc/aliases \nwaffles.options.parse_options     $@   Now when declaring an alias, you can do:  augeas.mail_alias --root --destination jdoe --destination jsmith --destination foobar", 
+            "title": "waffles.options.create_mv_option"
+        }, 
+        {
+            "location": "/functions/options/#wafflesoptionsparse_options", 
+            "text": "This function cycles through all options that were given in a declared waffles.resource. It will report if any required options were not set.", 
+            "title": "waffles.options.parse_options"
+        }, 
+        {
+            "location": "/functions/resource/", 
+            "text": "Resource Functions\n\n\n\n\n\n\nResource Functions\n\n\nwaffles.resource.check_dependencies\n\n\nwaffles.resource.process\n\n\nwaffles.resource.read\n\n\nwaffles.resource.create\n\n\nwaffles.resource.update\n\n\nwaffles.resource.delete\n\n\n\n\n\n\n\n\n\n\nfunctions/resource.sh\n contains functions that coordinate resource execution. These functions should only be used when building resources.\n\n\nwaffles.resource.check_dependencies\n\n\nThis function takes an array of commands that the resource is dependent upon. It then checks if those commands exist:\n\n\n# Check if all dependencies are installed\nlocal _wrd=(\napt-add-repository\n \napt-get\n \nsed\n)\nif ! waffles.resource.check_dependencies \n${_wrd[@]}\n ; then\n  return 2\nfi\n\n\n\n\nwaffles.resource.process\n\n\nThis function does several things:\n\n\n\n\nCalls \nwaffles.resource.read\n, which in turn calls \ncalling_waffles.resource.read\n.\n\n\nCompares the resource state versus the state that the resource has been requested to be in.\n\n\nDepending on the results of the above, calls \nwaffles.resource.x\n, which in turn calls \ncalling_waffles.resource.x\n.\n\n\n\n\nThis function requires two arguments:\n\n\n\n\n$1\n: The resource type (\napt.pkg\n)\n\n\n$2\n: The resource name (\napache2\n)\n\n\n\n\nwaffles.resource.read\n\n\nCalls \nresource_type.read\n. May also perform pre and post actions.\n\n\nwaffles.resource.create\n\n\nCalls \nresource_type.create\n.\n\n\nAlso flags that a resource has changed and increments the amount of total changes made throughout the Waffles run.\n\n\nwaffles.resource.update\n\n\nCalls \nresource_type.update\n.\n\n\nAlso flags that a resource has changed and increments the amount of total changes made throughout the Waffles run.\n\n\nwaffles.resource.delete\n\n\nCalls \nresource_type.delete\n.\n\n\nAlso flags that a resource has changed and increments the amount of total changes made throughout the Waffles run.", 
+            "title": "resource"
+        }, 
+        {
+            "location": "/functions/resource/#resource-functions", 
+            "text": "Resource Functions  waffles.resource.check_dependencies  waffles.resource.process  waffles.resource.read  waffles.resource.create  waffles.resource.update  waffles.resource.delete      functions/resource.sh  contains functions that coordinate resource execution. These functions should only be used when building resources.", 
+            "title": "Resource Functions"
+        }, 
+        {
+            "location": "/functions/resource/#wafflesresourcecheck_dependencies", 
+            "text": "This function takes an array of commands that the resource is dependent upon. It then checks if those commands exist:  # Check if all dependencies are installed\nlocal _wrd=( apt-add-repository   apt-get   sed )\nif ! waffles.resource.check_dependencies  ${_wrd[@]}  ; then\n  return 2\nfi", 
+            "title": "waffles.resource.check_dependencies"
+        }, 
+        {
+            "location": "/functions/resource/#wafflesresourceprocess", 
+            "text": "This function does several things:   Calls  waffles.resource.read , which in turn calls  calling_waffles.resource.read .  Compares the resource state versus the state that the resource has been requested to be in.  Depending on the results of the above, calls  waffles.resource.x , which in turn calls  calling_waffles.resource.x .   This function requires two arguments:   $1 : The resource type ( apt.pkg )  $2 : The resource name ( apache2 )", 
+            "title": "waffles.resource.process"
+        }, 
+        {
+            "location": "/functions/resource/#wafflesresourceread", 
+            "text": "Calls  resource_type.read . May also perform pre and post actions.", 
+            "title": "waffles.resource.read"
+        }, 
+        {
+            "location": "/functions/resource/#wafflesresourcecreate", 
+            "text": "Calls  resource_type.create .  Also flags that a resource has changed and increments the amount of total changes made throughout the Waffles run.", 
+            "title": "waffles.resource.create"
+        }, 
+        {
+            "location": "/functions/resource/#wafflesresourceupdate", 
+            "text": "Calls  resource_type.update .  Also flags that a resource has changed and increments the amount of total changes made throughout the Waffles run.", 
+            "title": "waffles.resource.update"
+        }, 
+        {
+            "location": "/functions/resource/#wafflesresourcedelete", 
+            "text": "Calls  resource_type.delete .  Also flags that a resource has changed and increments the amount of total changes made throughout the Waffles run.", 
+            "title": "waffles.resource.delete"
+        }, 
+        {
+            "location": "/functions/strings/", 
+            "text": "String Functions\n\n\nfunctions/strings.sh\n contains functions to help manipulate strings.\n\n\nstring.split\n\n\nSplits a string into an array. Stores the result in \n__split\n. The delimiter can be multi-character.\n\n\nstring.split \nfoo/bar\n, \n/\n\nlog.info $__split[1] # bar\n\n\n\n\nstring.trim\n\n\nTrims the whitespace on both sides of a string.\n\n\ntrimmed=$(string.trim \n   foobar   \n\nlog.info \n$trimmed\n # foobar", 
+            "title": "strings"
+        }, 
+        {
+            "location": "/functions/strings/#string-functions", 
+            "text": "functions/strings.sh  contains functions to help manipulate strings.", 
+            "title": "String Functions"
+        }, 
+        {
+            "location": "/functions/strings/#stringsplit", 
+            "text": "Splits a string into an array. Stores the result in  __split . The delimiter can be multi-character.  string.split  foo/bar ,  / \nlog.info $__split[1] # bar", 
+            "title": "string.split"
+        }, 
+        {
+            "location": "/functions/strings/#stringtrim", 
+            "text": "Trims the whitespace on both sides of a string.  trimmed=$(string.trim     foobar    \nlog.info  $trimmed  # foobar", 
+            "title": "string.trim"
+        }, 
+        {
+            "location": "/functions/utils/", 
+            "text": "Utility Functions\n\n\nfunctions/utils.sh\n contains utility functions to help with using Waffles.\n\n\nwaffles.build_ini_file\n\n\nBuilds an ini file from a given hash.\n\n\nwaffles.build_ini_file data_openstack_keystone_settings /etc/keystone/keystone.conf\n\n\n\n\nwaffles.command_exists\n\n\nA simple wrapper around \nwhich\n.\n\n\nif [[ waffles.command_exists apt-get ]]; then\n  log.info \nWe're on a Debian-based system.\n\nfi\n\n\n\n\nwaffles.dir\n\n\nA simple function that returns the current directory of the script currently being run.\n\n\nwaffles.popd\n\n\nAn alias for \nexec.mute popd $1\n\n\nwaffles.pushd\n\n\nAn alias for \nexec.mute pushd $1", 
+            "title": "utils"
+        }, 
+        {
+            "location": "/functions/utils/#utility-functions", 
+            "text": "functions/utils.sh  contains utility functions to help with using Waffles.", 
+            "title": "Utility Functions"
+        }, 
+        {
+            "location": "/functions/utils/#wafflesbuild_ini_file", 
+            "text": "Builds an ini file from a given hash.  waffles.build_ini_file data_openstack_keystone_settings /etc/keystone/keystone.conf", 
+            "title": "waffles.build_ini_file"
+        }, 
+        {
+            "location": "/functions/utils/#wafflescommand_exists", 
+            "text": "A simple wrapper around  which .  if [[ waffles.command_exists apt-get ]]; then\n  log.info  We're on a Debian-based system. \nfi", 
+            "title": "waffles.command_exists"
+        }, 
+        {
+            "location": "/functions/utils/#wafflesdir", 
+            "text": "A simple function that returns the current directory of the script currently being run.", 
+            "title": "waffles.dir"
+        }, 
+        {
+            "location": "/functions/utils/#wafflespopd", 
+            "text": "An alias for  exec.mute popd $1", 
+            "title": "waffles.popd"
+        }, 
+        {
+            "location": "/functions/utils/#wafflespushd", 
+            "text": "An alias for  exec.mute pushd $1", 
+            "title": "waffles.pushd"
+        }, 
+        {
             "location": "/resources/apt.key/", 
             "text": "Name\n\n\napt.key\n\n\nDescription\n\n\nManages apt keys\n\n\nParameters\n\n\n\n\nstate: The state of the resource. Required. Default: present.\n\n\nname: An arbitrary name. Required.\n\n\nkey: The key to import. Required if no remote_keyfile.\n\n\nkeyserver: The key server. Required if no remote_keyfile.\n\n\nremote_keyfile: A remote key to import. Required if no key or keyserver.\n\n\n\n\nExample\n\n\napt.key --name \nfoobar\n --key 1C4CBDCDCD2EFD2A", 
             "title": "apt.key"

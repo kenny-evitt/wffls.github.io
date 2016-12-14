@@ -28,6 +28,70 @@
     
         
     <url>
+     <loc>https://wffls.github.io/functions/arrays/</loc>
+     <lastmod>2016-12-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://wffls.github.io/functions/consul/</loc>
+     <lastmod>2016-12-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://wffls.github.io/functions/exec/</loc>
+     <lastmod>2016-12-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://wffls.github.io/functions/ini/</loc>
+     <lastmod>2016-12-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://wffls.github.io/functions/logging/</loc>
+     <lastmod>2016-12-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://wffls.github.io/functions/mysql/</loc>
+     <lastmod>2016-12-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://wffls.github.io/functions/options/</loc>
+     <lastmod>2016-12-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://wffls.github.io/functions/resource/</loc>
+     <lastmod>2016-12-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://wffls.github.io/functions/strings/</loc>
+     <lastmod>2016-12-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://wffls.github.io/functions/utils/</loc>
+     <lastmod>2016-12-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
      <loc>https://wffls.github.io/resources/apt.key/</loc>
      <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
