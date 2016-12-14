@@ -10,7 +10,8 @@ Manages symlinks
 
 * state: The state of the resource. Required. Default: present.
 * name: The name of the link. Required.
-* target: The target of the link.
+* target: The target of the link. Optional.
+* overwrite: Overwrite the link if it already exists. Optional. Defaults to false.
 
 ### Example
 

@@ -15,6 +15,6 @@ Manages PPA repositories
 ### Example
 
 ```bash
-apt.ppa --ppa ppa:chris-lea/redis-server
+apt.ppa --ppa chris-lea/redis-server
 ```
 

@@ -5,17 +5,6 @@ function gendoc {
   _name=$1
   _file=$2
 
-  #while read -r line; do
-  #  if [[ $line =~ ^# ]]; then
-  #    if [[ $_line_count -eq 3 ]]; then
-  #      echo "# $_name" > "../resources/$_name.md"
-  #    fi
-#
-#      if [[ $_line_count -gt 3 ]]; then
-#        echo "$_line" >> "../resources/$_name.md"
-#      fi
-#    fi
-#  done < <(sed -e '/() {$/q' -r -e 's/^#\ ?//' "$_file" | grep -v "\(\) {" | sed -e '/^#/ s/#/=/g')
   sed -e '/() {$/q' -r -e 's/^#\ ?//' "$_file" | grep -v "\(\) {" | sed -e '/^=/ s/=/#/g' > "../docs/resources/$_name.md"
   echo "    - ${_name}: 'resources/${_name}.md'" >> ../mkdocs.yml
 }

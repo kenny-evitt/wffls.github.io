@@ -9,7 +9,7 @@ Manages dnf/yum repositories
 ### Parameters
 
 * state: The state of the resource. Required. Default: present.
-* file: name of the file in /etc/yum.repos.d/. Required.
+* file: name of the file in /etc/yum.repos.d/. Required. The file _must_ exist already.
 * name: name of the repo. Required.
 * description: A short description of the repo. Optional.
 * baseurl: URL location of the repo. Optional.

@@ -18,6 +18,6 @@ Manages debconf entries
 
 ```bash
 dpkg.debconf --package mysql-server --question mysql-server/root_password
-               --vtype password --value mypassword
+             --vtype password --value mypassword
 ```
 
